@@ -2,6 +2,7 @@ package com.tesco.controller;
 
 import com.tesco.entity.Employee;
 import com.tesco.repository.EmployeeRepository;
+import com.tesco.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,15 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository repository;
+    private EmployeeService service;
 
     @PostMapping
     public Employee saveEmployee(@RequestBody Employee employee) {
-        return repository.save(employee);
-    }
-
-    @GetMapping
-    public String getMessage() {
-        return "Employee API Working";
+        return service.saveEmployee(employee);
     }
 }
